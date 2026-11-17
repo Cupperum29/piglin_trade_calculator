@@ -25,7 +25,7 @@ __config() ->
                                        'options' -> ['gravel', //沙砾
                                                              'blackstone', //黑石
                                                              'spectral_arrow', //光灵箭
-                                                             'iron_nugget', //铁锭
+                                                             'iron_nugget', //铁粒
                                                              'nether_brick', //下界砖
                                                              'soul_sand', //灵魂沙
                                                              'quartz', //下界石英
@@ -92,14 +92,14 @@ __config() ->
                         'iron_boots' -> 57.375,
                         'enchanted_book' -> 91.8,
                   };
-                  //‼️不考虑版本1.16.2以下的版本‼️
+                  //‼️1.16.2以下的系数跟1.16.2+的也不一样，但是不考虑版本1.16.2以下的版本‼️
 
                   //物品名字映射表
                   global_name = {
                         'gravel' -> '沙砾',
                         'blackstone' -> '黑石',
                         'spectral_arrow' -> '光灵箭',
-                        'iron_nugget' -> '铁锭',
+                        'iron_nugget' -> '铁粒',
                         'nether_brick' -> '下界砖',
                         'soul_sand' -> '灵魂沙',
                         'quartz' -> '下界石英',
@@ -156,7 +156,7 @@ __config() ->
                              gravel = count * 3600 / global_ts /global_rates_1_21_6:'gravel';//沙砾的效率
                              blackstone = count * 3600 / global_ts / global_rates_1_21_6:'blackstone';//黑石的效率
                              spectral_arrow = count * 3600 / global_ts / global_rates_1_21_6:'spectral_arrow';//光灵箭的效率
-                             iron_nugget = count * 3600 / global_ts / global_rates_1_21_6:'iron_nugget';//铁锭的效率
+                             iron_nugget = count * 3600 / global_ts / global_rates_1_21_6:'iron_nugget';//铁粒的效率
                              nether_brick = count * 3600 / global_ts / global_rates_1_21_6:'nether_brick';//下界砖的效率
                              soul_sand = count * 3600 / global_ts / global_rates_1_21_6:'soul_sand';//灵魂沙的效率
                              quartz = count * 3600 / global_ts / global_rates_1_21_6:'quartz';//下界石英的效率
@@ -181,7 +181,7 @@ __config() ->
                              gravel = count * 3600 / global_ts / global_rates_1_16_2:'gravel';//沙砾的效率
                              blackstone = count * 3600 / global_ts / global_rates_1_16_2:'blackstone';//黑石的效率
                              spectral_arrow = count * 3600 / global_ts / global_rates_1_16_2:'spectral_arrow';//光灵箭的效率
-                             iron_nugget = count * 3600 / global_ts / global_rates_1_16_2:'iron_nugget';//铁锭的效率
+                             iron_nugget = count * 3600 / global_ts / global_rates_1_16_2:'iron_nugget';//铁粒的效率
                              nether_brick = count * 3600 / global_ts / global_rates_1_16_2:'nether_brick';//下界砖的效率
                              soul_sand = count * 3600 / global_ts / global_rates_1_16_2:'soul_sand';//灵魂沙的效率
                              quartz = count * 3600 / global_ts / global_rates_1_16_2:'quartz';//下界石英的效率
