@@ -13,44 +13,50 @@ __config() ->
   {
       'commands' ->
            {
-              '<count>' -> 'calc',                                  //成表输出猪灵交易效率表格
-              '<count> <item>' -> 'calc_item'             //单独输出指定物品的交易效率
+               //成表输出猪灵交易效率表格
+              '<count>' -> 'calc',                                  
+               //单独输出指定物品的交易效率
+              '<count> <item>' -> 'calc_item'
            },
                   'arguments' ->
                     {
-                       'count' -> { 'type' -> 'int',  //整数类型，为猪灵数量
-                                           'min' -> 1,       //最小值为 1，猪灵数量为0无意义，两个限制合为正整数
-                                           'suggest' -> [120, 1728, 1890] },//提供了几个常用选项
+                       'count' -> { 
+                                    'type' -> 'int',  //整数类型，为猪灵数量
+                                    'min' -> 1,       //最小值为 1，猪灵数量为0无意义，两个限制合为正整数
+                                    'suggest' -> [120, 1728, 1890] //提供了几个常用选项
+                                  },
                        'item' -> {'type' -> 'term',
-                                       'options' -> ['gravel', //沙砾
-                                                             'blackstone', //黑石
-                                                             'spectral_arrow', //光灵箭
-                                                             'iron_nugget', //铁粒
-                                                             'nether_brick', //下界砖
-                                                             'soul_sand', //灵魂沙
-                                                             'quartz', //下界石英
-                                                             'leather', //皮革
-                                                             'string', //线
-                                                             'crying_obsidian',//哭泣黑曜石
-                                                             'fire_charge',//火焰弹
-                                                             'obsidian',// //黑曜石
-                                                            'ender_pearl',//末影珍珠
-                                                             'water_bottle',//水瓶
-                                                             'dried_ghast',//失水恶魂
-                                                             'splash_potion',//喷溅型抗火药水
-                                                             'potion',//抗火药水
-                                                             'iron_boots',//铁靴子
-                                                             'enchanted_book'//附魔书
-                                                             ]//options修饰后，只能选择以上物品，否则报错
-                                       }
+                                  'options' -> [//options修饰后，只能选择以上物品，否则报错
+                                                'gravel', //沙砾
+                                                'blackstone', //黑石
+                                                'spectral_arrow', //光灵箭
+                                                'iron_nugget', //铁粒
+                                                'nether_brick', //下界砖
+                                                'soul_sand', //灵魂沙
+                                                'quartz', //下界石英
+                                                'leather', //皮革
+                                                'string', //线
+                                                'crying_obsidian',//哭泣黑曜石
+                                                'fire_charge',//火焰弹
+                                                'obsidian',// //黑曜石
+                                                'ender_pearl',//末影珍珠
+                                                'water_bottle',//水瓶
+                                                'dried_ghast',//失水恶魂
+                                                'splash_potion',//喷溅型抗火药水
+                                                'potion',//抗火药水
+                                                'iron_boots',//铁靴子
+                                                'enchanted_book'//附魔书
+                                               ]
+                                  }
                     },
-                  'scope' -> 'player'//限定为玩家使用
+                  'scope' -> 'player'//让每个玩家的应用状态相互隔离
   };
 
                   //全局变量
 
                   //每个物品所需的平均金锭数量（版本>=1.21.6，多了个失水恶魂）,数据来自https://zh.minecraft.wiki/w/%E4%BB%A5%E7%89%A9%E6%98%93%E7%89%A9
-                  global_rates_1_21_6 = {
+                  global_rates_1_21_6 = 
+                  {
                         'gravel' -> 0.977,
                         'blackstone' -> 0.977,
                         'spectral_arrow' -> 1.303,
@@ -72,7 +78,8 @@ __config() ->
                         'enchanted_book' -> 93.8,
                   };
                   //每个物品所需的平均金锭数量（版本1.16.2~1.21.5）,数据来自群友转发的计算表格
-                  global_rates_1_16_2 = {
+                  global_rates_1_16_2 = 
+                  {
                         'gravel' -> 0.96,
                         'blackstone' -> 0.96,
                         'spectral_arrow' -> 1.275,
@@ -92,10 +99,11 @@ __config() ->
                         'iron_boots' -> 57.375,
                         'enchanted_book' -> 91.8,
                   };
-                  //‼️1.16.2以下的系数跟1.16.2+的也不一样，但是不考虑版本1.16.2以下的版本‼️
+                  //‼️不考虑版本1.16.2以下的版本‼️
 
                   //物品名字映射表
-                  global_name = {
+                  global_name = 
+                  {
                         'gravel' -> '沙砾',
                         'blackstone' -> '黑石',
                         'spectral_arrow' -> '光灵箭',
@@ -117,7 +125,8 @@ __config() ->
                         'enchanted_book' -> '附魔书'
                   };
                   //物品颜色映射表
-                  global_color = {
+                  global_color = 
+                  {
                         'gravel' -> '#4D4C4C',
                         'blackstone' -> '#1D1A20',
                         'spectral_arrow' -> '#DAB930',
@@ -209,7 +218,7 @@ __config() ->
                       print(player(), format('#AAAAAA - ', global_color:'gravel' + ' ' + global_name:'gravel', '#AAAAAA ：','w ' + str('%.1f', gravel) +'/h'));                                                    //沙砾的效率
                       print(player(), format('#AAAAAA - ', global_color:'blackstone' + ' ' + global_name:'blackstone', '#AAAAAA ：','w ' + str('%.1f', blackstone) +'/h'));                              //黑石的效率
                       print(player(), format('#AAAAAA - ', global_color:'spectral_arrow' + ' ' + global_name:'spectral_arrow', '#AAAAAA ：','w ' + str('%.1f', spectral_arrow) +'/h'));        //光灵箭的效率
-                      print(player(), format('#AAAAAA - ', global_color:'iron_nugget' + ' ' + global_name:'iron_nugget', '#AAAAAA ：','w ' + str('%.1f', iron_nugget) +'/h'));                        //铁锭的效率
+                      print(player(), format('#AAAAAA - ', global_color:'iron_nugget' + ' ' + global_name:'iron_nugget', '#AAAAAA ：','w ' + str('%.1f', iron_nugget) +'/h'));                        //铁粒的效率
                       print(player(), format('#AAAAAA - ', global_color:'nether_brick' + ' ' + global_name:'nether_brick', '#AAAAAA ：','w ' + str('%.1f', nether_brick) +'/h'));                    //下界砖的效率
                       print(player(), format('#AAAAAA - ', global_color:'soul_sand' + ' ' + global_name:'soul_sand', '#AAAAAA ：','w ' + str('%.1f', soul_sand) +'/h'));                                  //灵魂沙的效率
                       print(player(), format('#AAAAAA - ', global_color:'quartz' + ' ' + global_name:'quartz', '#AAAAAA ：','w ' + str('%.1f', quartz) +'/h'));                                                   //下界石英的效率
@@ -220,7 +229,7 @@ __config() ->
                       print(player(), format('#AAAAAA - ', global_color:'obsidian' + ' ' + global_name:'obsidian', '#AAAAAA ：','w ' + str('%.1f', obsidian) +'/h'));                                          //黑曜石的效率
                       print(player(), format('#AAAAAA - ', global_color:'ender_pearl' + ' ' + global_name:'ender_pearl', '#AAAAAA ：','w ' + str('%.1f', ender_pearl) +'/h'));                        //末影珍珠的效率
                       print(player(), format('#AAAAAA - ', global_color:'water_bottle' + ' ' + global_name:'water_bottle', '#AAAAAA ：','w ' + str('%.1f', water_bottle) +'/h'));                    //水瓶的效率
-                      if(dv >= 4325,print(player(), format('#AAAAAA - ', global_color:'dried_ghast' + ' ' + global_name:'dried_ghast', '#AAAAAA ：','w ' + str('%.1f', dried_ghast) +'/h'))); //失水恶魂的效率
+                      if(dv >= 4435,print(player(), format('#AAAAAA - ', global_color:'dried_ghast' + ' ' + global_name:'dried_ghast', '#AAAAAA ：','w ' + str('%.1f', dried_ghast) +'/h'))); //失水恶魂的效率
                       print(player(), format('#AAAAAA - ', global_color:'splash_potion' + ' ' + global_name:'splash_potion', '#AAAAAA ：','w ' + str('%.1f', splash_potion) +'/h'));                //喷溅型抗火药水的效率
                       print(player(), format('#AAAAAA - ', global_color:'potion' + ' ' + global_name:'potion', '#AAAAAA ：','w ' + str('%.1f', potion) +'/h'));                                                    //抗火药水的效率
                       print(player(), format('#AAAAAA - ', global_color:'iron_boots' + ' ' + global_name:'iron_boots', '#AAAAAA ：','w ' + str('%.1f', iron_boots) +'/h'));                               //铁靴子的效率
@@ -240,9 +249,13 @@ __config() ->
                              print(player(), format('w ' + count + '猪的', global_color:item + ' ' + global_name:item, 'w 的理论平均效率为' + str('%.1f', eff) +'/h'));
                             ),
                           (
+                           if(item = dried_ghast),(print(player(), format('w ‼️1.21.6以下没有',global_color:item + ' 失水恶魂' + 'w ‼️'))),         
+                           //谁会在没有失水恶魂的版本算失水恶魂的效率啊
+                           ( 
                            print(player(), format('w 游戏版本为1.16.2~1.21.5'));
                            eff = count * 3600 / global_ts / global_rates_1_16_2:item;//计算指定物品的效率
                            print(player(), format('w ' + count + '猪的', global_color:item + ' ' + global_name:item, 'w 的理论平均效率为' + str('%.1f', eff) +'/h'));
+                           )
                           )
                         );
                   );
