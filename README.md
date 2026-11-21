@@ -10,6 +10,7 @@
 ## 安装
 [官方文档](https://github.com/gnembon/fabric-carpet/blob/c6d48ab4/docs/scarpet/api/Overview.md?plain=1#L21-L23) \
 说人话：把.sc文件放进存档的scripts文件夹里，进入存档后再输入`/script load <脚本名>`即可成功加载。 \
+如果你是单人游戏想要存档都启用这个脚本而嫌一个个复制粘贴太麻烦，那就把它放进`.minecraft/config/carpet/scripts`里。 \
 如果是打开着存档的情况对scarpet脚本有修改，先输入/reload再执行上述操作。 \
 另外，推荐打开地毯的自动加载脚本规则`/carpet scriptsAutoload true`，这样进入存档时就能自动加载scarpet脚本。
 ## 功能
