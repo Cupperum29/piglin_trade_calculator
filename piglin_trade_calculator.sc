@@ -6,7 +6,7 @@
 //     默认交易效率为 100%，因此本计算器为理论效率计算器
 //     注意：由于猪灵交易的间隔较大，因此要尤其注意收集率
 //     部分数据来自群友转发的计算表格
-//     用法：piglin_trade_calculator <猪灵数量>
+//     用法：piglin_trade_efficiency_calculator <猪灵数量> ?<物品>
 //     Data_Version:1.21.6->4435
 //                            1.16.2->2576
 __config() ->
@@ -244,15 +244,15 @@ __config() ->
                         (
                           dv >= 4435,
                             (
-                             print(player(), format('w 游戏版本为1.21.6+'));
+                             print(player(), format('w 当前的游戏版本为1.21.6+'));
                              eff = count * 3600 / global_ts / global_rates_1_21_6:item;//计算指定物品的效率
                              print(player(), format('w ' + count + '猪的', global_color:item + ' ' + global_name:item, 'w 的理论平均效率为' + str('%.1f', eff) +'/h'));
                             ),
                           (
-                           if(item = dried_ghast),(print(player(), format('w ‼️1.21.6以下没有',global_color:item + ' 失水恶魂' + 'w ‼️'))),         
+                           if(item == dried_ghast),(print(player(), format('w ‼️1.21.6以下没有',global_color:item + ' 失水恶魂', 'w ‼️'))),
                            //谁会在没有失水恶魂的版本算失水恶魂的效率啊
                            ( 
-                           print(player(), format('w 游戏版本为1.16.2~1.21.5'));
+                           print(player(), format('w 当前的游戏版本为1.16.2~1.21.5'));
                            eff = count * 3600 / global_ts / global_rates_1_16_2:item;//计算指定物品的效率
                            print(player(), format('w ' + count + '猪的', global_color:item + ' ' + global_name:item, 'w 的理论平均效率为' + str('%.1f', eff) +'/h'));
                            )
